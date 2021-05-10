@@ -31,12 +31,12 @@
                   </div>
                   <div class="field">
                     <p class="control is-expanded has-icons-left has-icons-right">
-                      <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
+                      <input class="input is-success" id="email_id" type="email" placeholder="Email"  required >
                       <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
+                        <i id="email_icon" class="fas fa-envelope"></i>
                       </span>
                       <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
+                        <i id="email_icon2" class="fas fa-check"></i>
                       </span>
                     </p>
                   </div>
@@ -108,9 +108,33 @@
                 <div class="field-body">
                   <div class="field">
                     <div class="control">
-                      <button class="button is-primary">
+                      <button onclick="Validate()" class="button is-primary">
                         Send message
                       </button>
+                      <script>
+                       
+function Validate () {
+
+  var email_val = document.getElementById("email_id").value ; 
+      if (/\S+@\S+\.\S+/.test(email_val)) { 
+      
+        document.getElementById("email_id").className = "input is-success";
+        document.getElementById("email_icon").style.removeProperty("color");
+    document.getElementById("email_icon2").className = "fas fa-check"
+    document.getElementById("email_icon2").style.removeProperty("color");
+    return true; 
+  }
+  else {
+   
+    document.getElementById("email_id").className = "input is-danger";
+    document.getElementById("email_icon").style = "color:#ff5967;";
+    document.getElementById("email_icon2").className = "fas fa-times"
+    document.getElementById("email_icon2").style = "color:#ff5967;"
+  return false ;
+}
+  }
+
+                      </script>
                     </div>
                   </div>
                 </div>
